@@ -8,6 +8,8 @@
 #include <GLFW\glfw3.h>
 #include <cstdio>
 
+#include "IntroToOpenGL.h"
+
 using glm::vec2;
 using glm::vec3;
 using glm::vec4;
@@ -17,6 +19,23 @@ using glm::mat4;
 
 int main()
 {
+	IntroToOpenGL app;
+
+	if (app.Startup() == false)
+	{
+		return -1;
+	}
+
+	while (app.Update() == true)
+	{
+		app.Draw();
+	}
+
+	app.Startup();
+
+	return 0;
+
+	///////////////////////////////////////////
 	// Loads up glfw
 	if (glfwInit() == 0)
 		return -1;
