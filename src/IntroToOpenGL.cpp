@@ -9,10 +9,6 @@
 #include <GLFW\glfw3.h>
 #include <cstdio>
 
-using glm::vec2;
-using glm::vec3;
-using glm::vec4;
-
 
 IntroToOpenGL::IntroToOpenGL()
 {
@@ -66,9 +62,6 @@ bool IntroToOpenGL::Update()
 	mat4 view = glm::lookAt(vec3(-10, 5, -10), vec3(0, 1, 0), vec3(0, 1, 0));
 
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	Gizmos::clear();
-
 	Gizmos::addTransform(mat4(1), 4);
 
 	vec4 white(1);
@@ -102,6 +95,7 @@ bool IntroToOpenGL::Update()
 
 void IntroToOpenGL::Draw()
 {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glfwSwapBuffers(this->m_window);
 	glfwPollEvents();
 }
