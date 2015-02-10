@@ -16,6 +16,11 @@ public:
 private:
 	float m_speed;
 	vec3 m_up;
+
+	double m_horizontalAngle;
+	double m_verticalAngle;
+
+	float m_mouseSensitivity;
 };
 
 #endif // !_FLYCAMERA_H_

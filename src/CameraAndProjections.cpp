@@ -29,7 +29,7 @@ bool CameraAndProjections::Startup()
 	Gizmos::create();
 
 	m_sceneCam = FlyCamera(glm::radians(60.0f));
-	m_sceneCam.setLookAt(vec3(-1, 1, 0), vec3(0,0,0), vec3(0, 1, 0));
+	m_sceneCam.setLookAt(vec3(-1, 0, -1), vec3(0,0,0), vec3(0, 1, 0));
 
 	glfwSetTime(0.0);
 	return true;
