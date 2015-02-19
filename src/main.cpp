@@ -8,7 +8,7 @@
 #include <GLFW\glfw3.h>
 #include <cstdio>
 
-#include "CameraAndProjections.h"
+#include "Quaternions.h"
 
 using glm::vec2;
 using glm::vec3;
@@ -19,7 +19,7 @@ using glm::mat4;
 
 int main()
 {
-	CameraAndProjections app;
+	Quarternions app;
 
 	if (app.Startup() == false)
 	{

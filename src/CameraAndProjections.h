@@ -4,6 +4,7 @@
 #include "Application.h"
 #include "FlyCamera.h"
 
+#include "AntTweakBar.h"
 
 class CameraAndProjections : public Application
 {
@@ -20,8 +21,12 @@ public:
 private:
 	
 	FlyCamera m_sceneCam;
-	
 
+	vec4 m_backColor;
+	
+	float m_fps;
+
+	TwBar* m_bar;
 
 };
 

@@ -9,6 +9,42 @@
 #include <GLFW\glfw3.h>
 #include <cstdio>
 
+
+void OnMouseButton(GLFWwindow* window, int button, int pressed, int mod_keys)
+{
+	TwEventMouseButtonGLFW(button, pressed);
+}
+
+void OnMousePosition(GLFWwindow* window, double x, double y)
+{
+	TwEventMousePosGLFW((int)x, (int)y);
+}
+
+void OnMouseScroll(GLFWwindow* window, double x, double y)
+{
+	TwEventMouseWheelGLFW((int)y);
+}
+
+void OnKey(GLFWwindow* window, int key, int scancode, int pressed, int mod_keys)
+{
+	TwEventKeyGLFW(key, pressed);
+}
+
+void OnChar(GLFWwindow* window, unsigned int c)
+{
+	TwEventCharGLFW(c, GLFW_PRESS);
+}
+
+void OnWindowResize(GLFWwindow* window, int width, int height)
+{
+	TwWindowSize(width, height);
+	glViewport(0,0, width, height);
+}
+
+
+
+
+
 CameraAndProjections::CameraAndProjections()
 {
 
@@ -23,26 +59,54 @@ bool CameraAndProjections::Startup()
 	{
 		return false;
 	}
-	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+
+	m_backColor = vec4(0.3f,0.3f,0.3f,1.0f);
+
+	glClearColor(m_backColor.r, m_backColor.g, m_backColor.b, m_backColor.a);
 	glEnable(GL_DEPTH_TEST);
 
 	Gizmos::create();
 
+	//Camera
 	m_sceneCam = FlyCamera(glm::radians(60.0f));
 	m_sceneCam.setLookAt(vec3(-1, 0, -1), vec3(0,0,0), vec3(0, 1, 0));
 
+	//GUI
+	TwInit(TW_OPENGL_CORE, nullptr);
+	TwWindowSize(1280, 720);
+
+	glfwSetMouseButtonCallback(m_window, OnMouseButton);
+	glfwSetCursorPosCallback(m_window, OnMousePosition);
+	glfwSetScrollCallback(m_window, OnMouseScroll);
+	glfwSetKeyCallback(m_window, OnKey);
+	glfwSetCharCallback(m_window, OnChar);
+	glfwSetWindowSizeCallback(m_window, OnWindowResize);
+
+	m_bar = TwNewBar("Awesome Bar");
+	TwAddVarRW(m_bar, "Clear Color", TW_TYPE_COLOR4F, &m_backColor, "");
+	TwAddSeparator(m_bar, "sep1", "");
+	TwAddVarRO(m_bar, "FPS", TW_TYPE_FLOAT, &m_fps, "");
+
+	//
 	glfwSetTime(0.0);
 	return true;
 }
 void CameraAndProjections::Shutdown()
 {
+	TwDeleteAllBars();
+	TwTerminate();
+
 	Gizmos::destroy();
 }
 
 bool CameraAndProjections::Update()
 {
-	float dt = glfwGetTime();
+	float dt = (float)glfwGetTime();
 	glfwSetTime(0.0);
+
+	m_fps = 1 / dt;
+
+	glClearColor(m_backColor.r, m_backColor.g, m_backColor.b, m_backColor.a);
 
 	if (Application::Update() == false)
 	{
@@ -69,7 +133,9 @@ void CameraAndProjections::Draw()
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
 	Gizmos::draw(m_sceneCam.getProjectionView());
+	TwDraw();
 
 	glfwSwapBuffers(this->m_window);
 	glfwPollEvents();

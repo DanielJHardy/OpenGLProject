@@ -40,6 +40,7 @@ bool IntroToOpenGL::Startup()
 	m_timer = 0;
 
 	glfwSetTime(0.0);
+	return true;
 }
 
 void IntroToOpenGL::Shutdown()
