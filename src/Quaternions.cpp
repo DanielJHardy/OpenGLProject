@@ -27,7 +27,7 @@ bool Quarternions::Startup()
 
 	//Camera
 	m_sceneCam = FlyCamera(glm::radians(60.0f));
-	m_sceneCam.setLookAt(vec3(-1, 0, -1), vec3(0, 0, 0), vec3(0, 1, 0));
+	m_sceneCam.setLookAt(vec3(0, 0, 1), vec3(0, 0, 0), vec3(0, 1, 0));
 
 	/////////////////////////////
 	m_hip_frames[0].position = vec3(0, 5, 0);

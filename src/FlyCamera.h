@@ -21,6 +21,8 @@ private:
 	double m_verticalAngle;
 
 	float m_mouseSensitivity;
+	float m_yaw;
+	float m_pitch;
 };
 
 #endif // !_FLYCAMERA_H_
