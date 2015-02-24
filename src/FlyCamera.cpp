@@ -23,6 +23,8 @@ void FlyCamera::Update(float a_deltaTime)
 	//check for boost
 	if (glfwGetKey(glfwGetCurrentContext(), GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
 		mod *= 2;
+	else if (glfwGetKey(glfwGetCurrentContext(), GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+		mod /= 4;
 
 
 	//Forward
