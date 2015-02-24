@@ -1,9 +1,9 @@
 
-#include "Textures.h"
+#include "Lighting.h"
 
 int main()
 {
-	Textures  app;
+	Lighting app;
 
 	if (app.Startup() == false)
 	{

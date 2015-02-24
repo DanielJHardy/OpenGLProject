@@ -37,6 +37,9 @@
     <Filter Include="Applications\Textures">
       <UniqueIdentifier>{f3a9e27d-8989-4e5f-9952-06ec9dd455d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Applications\Lighting">
+      <UniqueIdentifier>{9b93d41c-7c94-4b85-825c-6f6857f63a27}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\gl_core_4_4.c">
@@ -77,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="src\Textures.cpp">
       <Filter>Applications\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lighting.cpp">
+      <Filter>Applications\Lighting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +131,9 @@
     <ClInclude Include="src\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lighting.h">
+      <Filter>Applications\Lighting</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="data\shaders\basic_fragment.glsl">
@@ -137,6 +146,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="data\shaders\texture_vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\shaders\lighting_fragment.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\shaders\lighting_vertex.glsl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
