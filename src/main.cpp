@@ -1,9 +1,9 @@
 
-#include "Lighting.h"
+#include "ParticleSystems.h"
 
 int main()
 {
-	Lighting app;
+	ParticleSystems app;
 
 	if (app.Startup() == false)
 	{
