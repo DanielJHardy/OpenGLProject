@@ -39,7 +39,7 @@ bool Lighting::Startup()
 
 	//Load FBX scene
 	m_fbx = new FBXFile();
-	m_fbx->load("./data/models/Bunny.fbx");
+	m_fbx->load("./data/models/Lucy.fbx");
 	createOpenGLBuffers(m_fbx);
 
 
@@ -141,8 +141,8 @@ void Lighting::createOpenGLBuffers(FBXFile* fbx)
 			mesh->m_vertices.data(), GL_STATIC_DRAW);
 
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-			mesh->m_vertices.size() * sizeof(unsigned int),
-			mesh->m_vertices.data(), GL_STATIC_DRAW);
+			mesh->m_indices.size() * sizeof(unsigned int),
+			mesh->m_indices.data(), GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(0); // position
 		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(FBXVertex), 0);

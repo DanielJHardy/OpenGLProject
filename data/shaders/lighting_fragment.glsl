@@ -5,5 +5,6 @@ out vec4 FragColour;
 
 void main() 
 {
-	FragColour = vec4(1,1,1,1);
+	float d = max(0, dot(normalize(vNormal.xyz), vec3(0,1,0)));
+	FragColour = vec4(d,d,d,1);
 } 
