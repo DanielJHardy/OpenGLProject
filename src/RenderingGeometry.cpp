@@ -27,7 +27,7 @@ bool RenderingGeometry::Startup()
 		return false;
 	}
 
-	LoadShaders("./src/basic_vertex.glsl", "./src/basic_fragment.glsl", &m_programID);
+	LoadShaders("./src/basic_vertex.glsl", "./src/basic_fragment.glsl", nullptr,  &m_programID);
 
 	m_backColor = vec4(0.3f, 0.3f, 0.3f, 1.0f);
 	glClearColor(m_backColor.r, m_backColor.g, m_backColor.b, m_backColor.a);
@@ -114,7 +114,7 @@ void RenderingGeometry::Draw()
 
 void RenderingGeometry::GenerateShaders()
 {
-	LoadShaders("./src/basic_vertex.glsl", "./src/basic_fragmant.glsl", &m_programID);
+	LoadShaders("./src/basic_vertex.glsl", "./src/basic_fragmant.glsl", nullptr, &m_programID);
 }
 
 void RenderingGeometry::createOpenGLBuffers(std::vector<tinyobj::shape_t>&shapes)

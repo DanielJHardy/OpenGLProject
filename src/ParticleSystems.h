@@ -5,6 +5,7 @@
 #include "FlyCamera.h"
 
 #include "Emitter.h"
+#include "AntTweakBar.h"
 
 
 
@@ -27,6 +28,7 @@ public:
 private:
 
 	FlyCamera m_sceneCam;
+	TwBar* m_bar;
 
 };
 

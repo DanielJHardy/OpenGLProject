@@ -26,12 +26,22 @@ bool ParticleSystems::Startup()
 	//Gizmos
 	Gizmos::create();
 
+	//GUI
+	TwInit(TW_OPENGL_CORE, nullptr);
+	TwWindowSize(1280, 720);
+#ifdef _CALLBACKS_H_
+	SetCallbacks(m_window);
+#endif // DEBUG
+
+	m_bar = TwNewBar("Awesome Bar");
+	TwAddSeparator(m_bar, "sep1", "");
+
 	//Camera
 	m_sceneCam = FlyCamera(glm::radians(60.0f));
 	m_sceneCam.setLookAt(vec3(0, 0, 1), vec3(0, 0, 0), vec3(0, 1, 0));
 
 	//emitter
-	LoadShaders("./data/shaders/particle_vertex.glsl", "./data/shaders/particle_fragment.glsl", &m_programID);
+	LoadShaders("./data/shaders/particle_vertex.glsl", "./data/shaders/particle_fragment.glsl", nullptr, &m_programID);
 
 	m_emitter = new Emitter();
 	m_emitter->Init(1000,vec3(0,0,0), 10000, 4.f, 4.f, 100, 100, 0.1f, 0.3f, vec4(1,0,0,1), vec4(1,1,0,1) );
@@ -46,6 +56,8 @@ bool ParticleSystems::Startup()
 
 void ParticleSystems::Shutdown()
 {
+	TwDeleteAllBars();
+	TwTerminate();
 	Gizmos::destroy();
 }
 bool ParticleSystems::Update()
@@ -94,6 +106,9 @@ void ParticleSystems::Draw()
 
 	//draw Gizmos
 	Gizmos::draw(m_sceneCam.getProjectionView());
+
+	//GUI
+	TwDraw();
 
 	glUseProgram(m_programID);
 

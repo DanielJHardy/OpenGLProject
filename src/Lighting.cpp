@@ -35,7 +35,7 @@ bool Lighting::Startup()
 	////////////////////
 
 	//Load shaders
-	LoadShaders("./data/shaders/lighting_vertex.glsl", "./data/shaders/lighting_fragment.glsl", &m_programID);
+	LoadShaders("./data/shaders/lighting_vertex.glsl", "./data/shaders/lighting_fragment.glsl", nullptr, &m_programID);
 
 	//Load FBX scene
 	m_fbx = new FBXFile();

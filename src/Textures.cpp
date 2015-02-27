@@ -39,7 +39,7 @@ bool Textures::Startup()
 	//Texture
 	loadTexture("./data/textures/crate.png");
 
-	LoadShaders("./data/shaders/texture_vertex.glsl","./data/shaders/texture_fragment.glsl",&m_programID);
+	LoadShaders("./data/shaders/texture_vertex.glsl","./data/shaders/texture_fragment.glsl", nullptr,&m_programID);
 
 	//Quad
 	float vertexData[] = {

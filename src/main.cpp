@@ -1,9 +1,9 @@
 
-#include "ParticleSystems.h"
+#include "GPUParticles.h"
 
 int main()
 {
-	ParticleSystems app;
+	GPUParticles app;
 
 	if (app.Startup() == false)
 	{
