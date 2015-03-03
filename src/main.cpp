@@ -1,5 +1,6 @@
 
 #include "GPUParticles.h"
+#include "Callbacks.h"
 
 int main()
 {
@@ -9,6 +10,8 @@ int main()
 	{
 		return -1;
 	}
+
+	SetCallbacks(app.m_window);
 
 	while (app.Update() == true)
 	{

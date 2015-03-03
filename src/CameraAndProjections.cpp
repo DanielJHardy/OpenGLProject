@@ -8,7 +8,6 @@
 
 #include <GLFW\glfw3.h>
 
-#include "Callbacks.h"
 #include <cstdio>
 
 CameraAndProjections::CameraAndProjections()
@@ -40,10 +39,6 @@ bool CameraAndProjections::Startup()
 	//GUI
 	TwInit(TW_OPENGL_CORE, nullptr);
 	TwWindowSize(1280, 720);
-
-#ifdef _CALLBACKS_H_
-	SetCallbacks(m_window);
-#endif // DEBUG
 
 	m_bar = TwNewBar("Awesome Bar");
 	TwAddVarRW(m_bar, "Clear Color", TW_TYPE_COLOR4F, &m_backColor, "");
