@@ -1,10 +1,10 @@
 
-#include "GPUParticles.h"
+#include "AdvancedTexturing.h"
 #include "Callbacks.h"
 
 int main()
 {
-	GPUParticles app;
+	AdvancedTexturing app;
 
 	if (app.Startup() == false)
 	{

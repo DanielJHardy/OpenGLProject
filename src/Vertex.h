@@ -17,10 +17,10 @@ struct VertexTexCoord
 
 struct VertexNormal
 {
-	vec4 position;
-	vec4 normal;
-	vec4 tangent;
-	vec2 tex_coord;
+	float x, y, z, w;
+	float nx, ny, nz, nw;
+	float tx, ty, tz, tw;
+	float s, t;
 };
 
 struct VertexParticle
