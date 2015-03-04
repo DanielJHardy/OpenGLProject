@@ -7,7 +7,6 @@
 
 #include "glm_header.h"
 
-
 #include <GLFW\glfw3.h>
 #include <cstdio>
 
@@ -41,7 +40,6 @@ bool Lighting::Startup()
 	m_fbx = new FBXFile();
 	m_fbx->load("./data/models/Lucy.fbx");
 	createOpenGLBuffers(m_fbx);
-
 
 	Gizmos::create();
 

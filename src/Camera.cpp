@@ -6,7 +6,7 @@ Camera::Camera(float a_fov)
 	m_viewTransform = glm::lookAt(vec3(-1, 2, -1), vec3(0, 0, 0), vec3(0, 1, 0));
 	m_worldTransform = glm::inverse(m_viewTransform);
 
-	m_projectionTransform = glm::perspective(a_fov, 1280.0f / 720.0f, 0.1f, 100.0f);
+	m_projectionTransform = glm::perspective(a_fov, 1280.0f / 720.0f, 0.1f, 10000.0f);
 	m_projectionViewTransform = m_projectionTransform * m_viewTransform;
 }
 

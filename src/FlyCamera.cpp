@@ -6,7 +6,7 @@ const double centerY = 720 / 2;
 FlyCamera::FlyCamera(){}
 FlyCamera::FlyCamera(float a_fov) : Camera(a_fov)
 {
-	m_speed = 4;
+	m_speed = 100;
 	m_up = vec3(0, 1, 0);
 	m_mouseSensitivity = 1.f;
 

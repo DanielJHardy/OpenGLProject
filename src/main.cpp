@@ -1,10 +1,10 @@
 
-#include "AdvancedTexturing.h"
+#include "Animation.h"
 #include "Callbacks.h"
 
 int main()
 {
-	AdvancedTexturing app;
+	Animation app;
 
 	if (app.Startup() == false)
 	{

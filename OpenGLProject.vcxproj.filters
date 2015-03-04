@@ -49,6 +49,9 @@
     <Filter Include="Applications\AdvancedTexturing">
       <UniqueIdentifier>{290217c2-7d9e-44da-94b5-142cb7a19bd6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Applications\Animation">
+      <UniqueIdentifier>{984ecc67-78a2-4085-b634-b7f75276f3ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\gl_core_4_4.c">
@@ -107,6 +110,9 @@
     </ClCompile>
     <ClCompile Include="src\AdvancedTexturing.cpp">
       <Filter>Applications\AdvancedTexturing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Animation.cpp">
+      <Filter>Applications\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +182,9 @@
     <ClInclude Include="src\AdvancedTexturing.h">
       <Filter>Applications\AdvancedTexturing</Filter>
     </ClInclude>
+    <ClInclude Include="src\Animation.h">
+      <Filter>Applications\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="data\shaders\basic_fragment.glsl">
@@ -215,6 +224,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="data\shaders\textureNorm_fragment.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\shaders\animation_fragment.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\shaders\animation_vertex.glsl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
