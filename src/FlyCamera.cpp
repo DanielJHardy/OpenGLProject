@@ -78,8 +78,8 @@ void FlyCamera::Update(float a_deltaTime)
 		x *= -m_mouseSensitivity;
 		y *= -m_mouseSensitivity;
 
-		m_yaw += x;
-		m_pitch += y;
+		m_yaw += (float)x;
+		m_pitch += (float)y;
 
 		// restrict pitch
 		if (m_pitch > glm::radians(90.f))

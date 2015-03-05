@@ -1,10 +1,10 @@
 
-#include "GPUParticles.h"
+#include "SceneManagement.h"
 #include "Callbacks.h"
 
 int main()
 {
-	GPUParticles app;
+	SceneManagement app;
 
 	if (app.Startup() == false)
 	{

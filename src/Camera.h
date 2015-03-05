@@ -31,6 +31,8 @@ public:
 	mat4 getProjection();
 	mat4 getProjectionView();
 
+	vec4* getFrustrumPlanes(const mat4& a_transform);
+
 
 protected:
 
@@ -40,6 +42,9 @@ protected:
 	mat4 m_projectionViewTransform;
 
 	void updateProjectionViewTransform();
+
+private:
+	vec4 m_frustrum[6];
 
 };
 

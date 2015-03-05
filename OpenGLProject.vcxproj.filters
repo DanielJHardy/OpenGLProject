@@ -37,9 +37,6 @@
     <Filter Include="Applications\Textures">
       <UniqueIdentifier>{f3a9e27d-8989-4e5f-9952-06ec9dd455d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Applications\Lighting">
-      <UniqueIdentifier>{9b93d41c-7c94-4b85-825c-6f6857f63a27}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Applications\ParticleSystems">
       <UniqueIdentifier>{9711c491-e4f1-4193-8bd3-3ba969e78fa6}</UniqueIdentifier>
     </Filter>
@@ -51,6 +48,12 @@
     </Filter>
     <Filter Include="Applications\Animation">
       <UniqueIdentifier>{984ecc67-78a2-4085-b634-b7f75276f3ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Applications\IntroToOpenGL\Lighting">
+      <UniqueIdentifier>{9b93d41c-7c94-4b85-825c-6f6857f63a27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Applications\SceneManagement">
+      <UniqueIdentifier>{ee69e292-ca57-4feb-b184-72ade4304867}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -94,7 +97,7 @@
       <Filter>Applications\Textures</Filter>
     </ClCompile>
     <ClCompile Include="src\Lighting.cpp">
-      <Filter>Applications\Lighting</Filter>
+      <Filter>Applications\IntroToOpenGL\Lighting</Filter>
     </ClCompile>
     <ClCompile Include="src\ParticleSystems.cpp">
       <Filter>Applications\ParticleSystems</Filter>
@@ -113,6 +116,9 @@
     </ClCompile>
     <ClCompile Include="src\Animation.cpp">
       <Filter>Applications\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneManagement.cpp">
+      <Filter>Applications\SceneManagement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +168,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Lighting.h">
-      <Filter>Applications\Lighting</Filter>
+      <Filter>Applications\IntroToOpenGL\Lighting</Filter>
     </ClInclude>
     <ClInclude Include="src\ParticleSystems.h">
       <Filter>Applications\ParticleSystems</Filter>
@@ -184,6 +190,12 @@
     </ClInclude>
     <ClInclude Include="src\Animation.h">
       <Filter>Applications\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SceneManagement.h">
+      <Filter>Applications\SceneManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BoundingObjects.h">
+      <Filter>Applications\SceneManagement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

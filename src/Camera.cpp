@@ -56,3 +56,43 @@ void Camera::updateProjectionViewTransform()
 {
 	m_projectionViewTransform = m_projectionTransform * m_viewTransform;
 }
+
+vec4* Camera::getFrustrumPlanes(const mat4& a_transform)
+{
+
+	//right side
+	m_frustrum[0] = vec4(	a_transform[0][3] - a_transform[0][0], //is the 1 a typo?
+							a_transform[1][3] - a_transform[1][0],
+							a_transform[2][3] - a_transform[2][0],
+							a_transform[3][3] - a_transform[3][0]);
+	//left side
+	m_frustrum[1] = vec4(	a_transform[0][3] + a_transform[0][0],
+							a_transform[1][3] + a_transform[1][0],
+							a_transform[2][3] + a_transform[2][0],
+							a_transform[3][3] + a_transform[3][0]);
+	//top
+	m_frustrum[2] = vec4(	a_transform[0][3] - a_transform[0][1],
+							a_transform[1][3] - a_transform[1][1],
+							a_transform[2][3] - a_transform[2][1],
+							a_transform[3][3] - a_transform[3][1]);
+	//bottom
+	m_frustrum[3] = vec4(	a_transform[0][3] + a_transform[1][1],
+							a_transform[1][3] + a_transform[1][1],
+							a_transform[2][3] + a_transform[2][1],
+							a_transform[3][3] + a_transform[3][1]);
+	//far
+	m_frustrum[4] = vec4(	a_transform[0][3] - a_transform[0][2],
+							a_transform[1][3] - a_transform[1][2],
+							a_transform[2][3] - a_transform[2][2],
+							a_transform[3][3] - a_transform[3][2]);
+	//near													   
+	m_frustrum[5] = vec4(	a_transform[0][3] + a_transform[1][2],
+							a_transform[1][3] + a_transform[1][2],
+							a_transform[2][3] + a_transform[2][2],
+							a_transform[3][3] + a_transform[3][2]);
+
+	for (int i = 0; i < 6; i++)
+		m_frustrum[i] = glm::normalize(m_frustrum[i]);
+
+	return m_frustrum;
+}
