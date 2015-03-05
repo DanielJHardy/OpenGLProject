@@ -47,7 +47,8 @@ void main()
 		updated_position = emitter_position;
 				
 
-		uint seed = uint(gl_VertexID + (time * 1000) + uint(gl_VertexID));
+		//uint seed = uint(gl_VertexID + (time * 1000) + uint(gl_VertexID));
+		uint seed = uint((time * 1000) + uint(gl_VertexID));
 
 		//set velocity
 		float vel_range = max_velocity - min_velocity;
@@ -62,7 +63,6 @@ void main()
 		updated_lifetime = 0;
 		float lifespan_range = max_lifespan - min_lifespan;
 		updated_lifespan = rand(seed++, lifespan_range) + min_lifespan;
-
 
 	}
 

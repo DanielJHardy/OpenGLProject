@@ -40,7 +40,8 @@ bool GPUParticles::Startup()
 	m_sceneCam = FlyCamera(glm::radians(60.0f));
 	m_sceneCam.setLookAt(vec3(0, 0, 10), vec3(0, 0, 0), vec3(0, 1, 0));
 
-	m_emitter.Init(5, vec3(0,0,0), 0, 5, 5, 0.8f, 1.0f, 1, 0.01f,vec4(1,0,0,1), vec4(0,1,0,1));
+	//m_emitter = GPUPointEmitter();
+	m_emitter.Init(1 ,vec3(0,0,0), 10, 1, 5, 0.8f, 1.0f, 0.05f, 1.0f,vec4(1,0,0,1), vec4(0,1,0,1));
 	m_time = 0;
 
 	////GUI

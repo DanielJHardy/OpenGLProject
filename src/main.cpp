@@ -1,10 +1,10 @@
 
-#include "Animation.h"
+#include "GPUParticles.h"
 #include "Callbacks.h"
 
 int main()
 {
-	Animation app;
+	GPUParticles app;
 
 	if (app.Startup() == false)
 	{

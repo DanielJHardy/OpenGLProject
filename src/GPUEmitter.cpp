@@ -63,8 +63,8 @@ void GPUPointEmitter::CreateBuffers()
 
 		glEnableVertexAttribArray(0); //pos
 		glEnableVertexAttribArray(1); //vel
-		glEnableVertexAttribArray(2); //lifespan
-		glEnableVertexAttribArray(3); //lifetime
+		glEnableVertexAttribArray(2); //lifetime
+		glEnableVertexAttribArray(3); //lifespan
 
 		glVertexAttribPointer(0,3, GL_FLOAT, GL_FALSE, sizeof(GPUParticle), 0);
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(GPUParticle), (void*)(12));
@@ -90,12 +90,18 @@ void GPUPointEmitter::CreatUpdateShader()
 
 	glLinkProgram(m_update_shader);
 	glDeleteShader(vertex_shader);
+	GLint uniforms;
+	glGetProgramiv(m_update_shader, GL_ACTIVE_UNIFORMS, &uniforms);
+
 
 }
 
 void GPUPointEmitter::CreateDrawShader()
 {
+	m_draw_shader = glCreateProgram();
 	LoadShaders("./data/shaders/gpu_particle_vert.glsl", "./data/shaders/gpu_particle_frag.glsl", "./data/shaders/gpu_particle_geom.glsl", &m_draw_shader);
+	GLint uniforms;
+	glGetProgramiv(m_draw_shader, GL_ACTIVE_UNIFORMS, &uniforms);
 }
 
 void GPUPointEmitter::Draw(float a_curr_time, mat4 a_cam_transform, mat4 a_projection_view)
@@ -113,6 +119,9 @@ void GPUPointEmitter::Draw(float a_curr_time, mat4 a_cam_transform, mat4 a_proje
 	//update vertex pass
 	glUseProgram(m_update_shader);
 
+	GLint uniforms;
+	glGetProgramiv(m_update_shader, GL_ACTIVE_UNIFORMS, &uniforms);
+
 	int delta_uniform = glGetUniformLocation(m_update_shader, "dela_time");
 	int emitter_pos_uniform = glGetUniformLocation(m_update_shader, "emitter_position");
 	int min_vel_uniform = glGetUniformLocation(m_update_shader, "min_velocity");
@@ -129,6 +138,7 @@ void GPUPointEmitter::Draw(float a_curr_time, mat4 a_cam_transform, mat4 a_proje
 	glUniform1f(max_life_uniform, m_lifespan_max);
 	glUniform1f(time_uniform, a_curr_time);
 
+	//disbale rasterization
 	glEnable(GL_RASTERIZER_DISCARD);
 
 	glBindVertexArray(m_vao[m_active_buffer]);
@@ -143,7 +153,7 @@ void GPUPointEmitter::Draw(float a_curr_time, mat4 a_cam_transform, mat4 a_proje
 
 	glEndTransformFeedback();
 	glDisable(GL_RASTERIZER_DISCARD);
-	glBindBufferBase(GL_TRANSFORM_FEEDBACK, 0, 0);
+	glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, 0);
 
 	//render pass
 	glUseProgram(m_draw_shader);
@@ -164,6 +174,8 @@ void GPUPointEmitter::Draw(float a_curr_time, mat4 a_cam_transform, mat4 a_proje
 
 	glBindVertexArray(m_vao[other_buffer]);
 	glDrawArrays(GL_POINTS,0, m_max_particles);//////////////////////
+
+	m_active_buffer = other_buffer;
 
 	m_last_draw_time = a_curr_time;
 

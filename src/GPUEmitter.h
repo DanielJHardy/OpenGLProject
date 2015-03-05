@@ -42,24 +42,31 @@ public:
 	GPUParticle* m_particles;
 	unsigned int m_max_particles;
 
+	//position
 	vec3 m_position;
 
+	//lifespan
 	float m_lifespan_min;
 	float m_lifespan_max;
 
+	//velocity
 	float m_velocity_min;
 	float m_velocity_max;
 
+	//size
 	float m_start_size;
 	float m_end_size;
 
+	//color
 	vec4 m_start_color;
 	vec4 m_end_color;
 
+	//buffers
 	unsigned int m_active_buffer;
 	unsigned int m_vao[2];
 	unsigned int m_vbo[2];
 
+	//shaders
 	unsigned int m_update_shader;
 	unsigned int m_draw_shader;
 

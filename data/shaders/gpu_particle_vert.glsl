@@ -6,8 +6,9 @@ layout(location=2) in float lifetime;
 layout(location=3) in float lifespan;
 
 out vec3 geo_position;
-out float geo_lifespan;
 out float geo_lifetime;
+out float geo_lifespan;
+
 
 void main()
 {

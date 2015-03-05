@@ -6,8 +6,8 @@
 
 bool LoadShaderType(char* filename, GLenum shader_type, unsigned int* output)
 {
-	bool succeded = false;
-	int infoLogLength = 0;
+	bool succeded = true;
+	//int infoLogLength = 0;
 
 	FILE* shader_file = fopen(filename, "r");
 
@@ -27,7 +27,6 @@ bool LoadShaderType(char* filename, GLenum shader_type, unsigned int* output)
 
 		shader_file_length = fread(shader_source, 1, shader_file_length, shader_file);
 
-		succeded = true;
 		unsigned int shader_handle = glCreateShader(shader_type);
 
 		glShaderSource(shader_handle, 1, &shader_source, &shader_file_length);
@@ -54,6 +53,7 @@ bool LoadShaderType(char* filename, GLenum shader_type, unsigned int* output)
 		}
 
 		delete[] shader_source;
+		fclose(shader_file);
 	}
 	return succeded;
 
@@ -114,7 +114,7 @@ bool LoadShaders(char* a_vertex_filename, char* a_fragment_filename, char* a_geo
 		glGetProgramiv(*a_result, GL_INFO_LOG_LENGTH, &infoLogLength);
 		char* infoLog = new char[infoLogLength];
 		glGetProgramInfoLog(*a_result, infoLogLength, 0, infoLog);
-		printf("ERROR: Failed tp link program\n\n");
+		printf("ERROR: Failed to link program\n\n");
 		printf("%s", infoLog);
 		delete[] infoLog;
 		succeeded = false;

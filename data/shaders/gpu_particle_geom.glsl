@@ -3,12 +3,15 @@
 layout(points) in;
 layout(triangle_strip, max_vertices = 4) out;
 
+//input from vertex shader
 in vec3 geo_position[];
 in float geo_lifetime[];
 in float geo_lifespan[];
 
+//output to fragment shader
 out vec4 frag_color;
 
+//Uniforms
 uniform mat4 projection_view;
 uniform mat4 camera_world;
 
@@ -39,7 +42,8 @@ void main()
 
 	//build the rotation matrix
 	vec3 forward = normalize(camera_world[3].xyz - geo_position[0]);
-	vec3 right = cross(forward,camera_world[1].xyz);
+	//vec3 right = cross(forward,camera_world[1].xyz);
+	vec3 right = cross(camera_world[1].xyz, forward);
 	vec3 up = cross(forward, right);
 
 	mat3 billboard_rot = mat3(right, up, forward);
