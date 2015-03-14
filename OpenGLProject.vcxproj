@@ -95,6 +95,7 @@
     <ClCompile Include="src\RenderingGeometry.cpp" />
     <ClCompile Include="src\SceneManagement.cpp" />
     <ClCompile Include="src\Textures.cpp" />
+    <ClCompile Include="src\Threading.cpp" />
     <ClCompile Include="src\tiny_obj_loader.cc" />
     <ClCompile Include="src\Utility.cpp" />
   </ItemGroup>
@@ -121,6 +122,7 @@
     <ClInclude Include="src\SceneManagement.h" />
     <ClInclude Include="src\stb_image.h" />
     <ClInclude Include="src\Textures.h" />
+    <ClInclude Include="src\Threading.h" />
     <ClInclude Include="src\tiny_obj_loader.h" />
     <ClInclude Include="src\Utility.h" />
     <ClInclude Include="src\Vertex.h" />

@@ -1,10 +1,10 @@
 
-#include "SceneManagement.h"
+#include "Threading.h"
 #include "Callbacks.h"
 
 int main()
 {
-	SceneManagement app;
+	Threading app;
 
 	if (app.Startup() == false)
 	{
