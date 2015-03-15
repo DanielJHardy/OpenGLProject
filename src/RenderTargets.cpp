@@ -3,10 +3,12 @@
 #include "gl_core_4_4.h"
 #include "Gizmos.h"
 
-#include "glm/glm.hpp"
-#include "glm/ext.hpp"
+#include "glm_header.h"
+#include "Utility.h"
 
 #include <GLFW\glfw3.h>
+
+
 
 #include <cstdio>
 
@@ -85,12 +87,35 @@ bool RenderTargets::Startup()
 	//unbind the FBO so we can render to the back buffer
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+	//create plane
+	float vertexData[] = { -5, 0, -5, 1, 0, 0, 5, 0, -5, 1, 1, 0, 5, 10, -5, 1, 1, 1, -5, 10, -5, 1, 0, 1, };
+	unsigned int indexData[] = { 0, 1, 2, 0, 2, 3, };
 
+	glGenVertexArrays(1, &m_vao);
+	glBindVertexArray(m_vao);
 
+	glGenBuffers(1, &m_vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6 * 4, vertexData, GL_STATIC_DRAW);
 
+	glGenBuffers(1, &m_ibo);  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * 6, indexData, GL_STATIC_DRAW);
 
+	glEnableVertexAttribArray(0);
 
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 6, ((char*)0) + 16);
 
+	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+	//load shaders
+	LoadShaders("./data/shaders/texture_vertex.glsl", "./data/shaders/texture_fragment.glsl", nullptr, &m_programID);
+
+	//create sphere
+	Gizmos::addSphere(vec3(0, 5, 0), 0.5f, 8, 8, vec4(1, 1, 0, 1));
 
 
 	//
@@ -112,7 +137,6 @@ bool RenderTargets::Update()
 
 	m_fps = 1 / dt;
 
-	glClearColor(m_backColor.r, m_backColor.g, m_backColor.b, m_backColor.a);
 
 	if (Application::Update() == false)
 	{
@@ -137,10 +161,36 @@ bool RenderTargets::Update()
 void RenderTargets::Draw()
 {
 
+
+	//frame buffer
+	glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);
+	glViewport(0,0,512,512);
+
+	glClearColor(m_backColor.r, m_backColor.g, m_backColor.b, m_backColor.a);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	Gizmos::draw(m_sceneCam.getProjectionView());
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glViewport(0,0, 1280, 720);
+
+	glClearColor(m_backColor.r, m_backColor.g, m_backColor.b, m_backColor.a);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	glUseProgram(m_programID);
+
+	int loc = glGetUniformLocation(m_programID, "ProjectionView");
+	glUniformMatrix4fv(loc, 1, GL_FALSE, (float*)&m_sceneCam.getProjectionView());
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, m_fboTexture);
+	glUniform1i(glGetUniformLocation(m_programID, "diffuse"), 0);
+
+	glBindVertexArray(m_vao);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
 	Gizmos::draw(m_sceneCam.getProjectionView());
+
 	TwDraw();
 
 	glfwSwapBuffers(this->m_window);

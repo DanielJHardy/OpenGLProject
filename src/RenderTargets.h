@@ -18,7 +18,12 @@ public:
 	virtual bool Update();
 	virtual void Draw();
 
+	unsigned int m_programID;
+
 	unsigned int m_fbo;
+	unsigned int m_vbo;
+	unsigned int m_vao;
+	unsigned int m_ibo;
 
 	unsigned int m_fboTexture;
 	unsigned int m_fboDepth;
