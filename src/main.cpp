@@ -1,10 +1,10 @@
 
-#include "Threading.h"
+#include "RenderTargets.h"
 #include "Callbacks.h"
 
 int main()
 {
-	Threading app;
+	RenderTargets app;
 
 	if (app.Startup() == false)
 	{

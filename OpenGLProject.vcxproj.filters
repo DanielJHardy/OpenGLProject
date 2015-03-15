@@ -58,6 +58,9 @@
     <Filter Include="Applications\Threading">
       <UniqueIdentifier>{6fc5f492-6fcb-4856-ae99-b30d1d40f826}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Applications\RenderTargets">
+      <UniqueIdentifier>{f3f0d769-4d4a-4699-aa56-300396f86070}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\gl_core_4_4.c">
@@ -125,6 +128,9 @@
     </ClCompile>
     <ClCompile Include="src\Threading.cpp">
       <Filter>Applications\Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderTargets.cpp">
+      <Filter>Applications\RenderTargets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="src\Threading.h">
       <Filter>Applications\Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RenderTargets.h">
+      <Filter>Applications\RenderTargets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
