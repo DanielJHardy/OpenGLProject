@@ -1,10 +1,10 @@
 
-#include "RenderTargets.h"
+#include "DeferredRendering.h"
 #include "Callbacks.h"
 
 int main()
 {
-	RenderTargets app;
+	DeferredRendering app;
 
 	if (app.Startup() == false)
 	{
