@@ -148,6 +148,8 @@
     <None Include="data\shaders\lighting_vertex.glsl" />
     <None Include="data\shaders\particle_fragment.glsl" />
     <None Include="data\shaders\particle_vertex.glsl" />
+    <None Include="data\shaders\point_light_fragment.glsl" />
+    <None Include="data\shaders\point_light_vertex.glsl" />
     <None Include="data\shaders\textureNorm_fragment.glsl" />
     <None Include="data\shaders\textureNorm_vertex.glsl" />
     <None Include="data\shaders\texture_fragment.glsl" />

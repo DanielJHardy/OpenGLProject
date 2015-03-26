@@ -286,6 +286,12 @@
     <None Include="data\shaders\directional_light_fragment.glsl">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="data\shaders\point_light_vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data\shaders\point_light_fragment.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="data\shaders\gpu_particle_frag.glsl">

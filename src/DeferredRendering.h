@@ -22,13 +22,17 @@ public:
 
 	void buildMesh();
 	void buildQuad();
+	void buildCube();
+
 	void renderDirectionalLight(vec3 light_dir, vec3 light_color);
+	void renderPointLight(vec3 position, float radius, vec3 diffuse);
 
 
 	void buildGbuffer();
 	void buildLightBuffer();
 
 	//load mesh
+	OpenGLInfo m_light_cube;
 	OpenGLInfo m_bunny;
 	OpenGLInfo m_screenspace_quad;
 
@@ -45,9 +49,11 @@ public:
 
 	//shaders
 	unsigned int m_gbuffer_program;
+
 	unsigned int m_directional_light_program;
 	unsigned int m_point_light_program;
 	unsigned int m_spot_light_program;
+
 	unsigned int m_composite_program;
 
 	//composite pass
@@ -60,7 +66,7 @@ private:
 	float m_fps;
 	TwBar* m_bar;
 
-	vec3 m_lightDir;
+	vec3 m_lightPos;
 
 };
 
